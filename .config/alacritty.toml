@@ -1,0 +1,374 @@
+[env]
+#TERM = "screen-256color"
+
+[colors.bright]
+black = "#3e4452"
+blue = "#61afef"
+cyan = "#56b6c2"
+green = "#98c379"
+magenta = "#c678dd"
+red = "#be5046"
+white = "#5c6370"
+yellow = "#d19a66"
+
+[colors.cursor]
+cursor = "#528bff"
+text = "#0b0b0b"
+
+# [colors.footer.bar]
+# background = "#282c34"
+# foreground = "#abb2bf"
+
+
+[colors.normal]
+black = "#24272e"
+blue = "#61afef"
+cyan = "#56b6c2"
+green = "#98c379"
+magenta = "#c678dd"
+red = "#e06c75"
+white = "#abb2bf"
+yellow = "#e5c07b"
+
+[colors.primary]
+background = "#000000"
+foreground = "#ffffff"
+#background = "#18182b"
+#foreground = "#abb2bf"
+
+[colors.search.matches]
+background = "#e5c07b"
+foreground = "#3e4452"
+
+[colors.selection]
+background = "#3e4452"
+text = "#abb2bf"
+
+[colors.vi_mode_cursor]
+cursor = "#333841"
+text = "#abb2bf"
+
+[cursor]
+# args = ["--login"]
+thickness = 0.18
+vi_mode_style = "Block"
+
+#[cursor.shell]
+#program = "/usr/local/bin/bash"
+
+[font]
+size = 11
+offset.x = 0 # For letter spacing (default: 0)
+offset.y = 0  # For line spacing (default: 0)
+
+[font.bold]
+family = "CaskaydiaMono Nerd Font Mono"
+#family = "ZedMono Nerd Font"
+style = "Bold"
+
+[font.italic]
+family = "CaskaydiaMono Nerd Font Mono"
+# family = "ZedMono Nerd Font"
+style = "Italic"
+
+[font.normal]
+family = "CaskaydiaMono Nerd Font Mono"
+# family = "ZedMono Nerd Font"
+# family = "JetBrainsMono NF"
+#family = "Hurmit Nerd Font Mono"
+style = "Regular"
+
+[[keyboard.bindings]]
+action = "Paste"
+key = "V"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "Copy"
+key = "C"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "Quit"
+key = "Q"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "Quit"
+key = "W"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "Equals"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "Minus"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "ResetFontSize"
+key = "Key0"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "ScrollToBottom"
+key = "End"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "ScrollToTop"
+key = "Home"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "U"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "U"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "U"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "U"
+mods = "Super"
+
+[[keyboard.bindings]]
+key = "T"
+mods = "Command"
+
+[keyboard.bindings.command]
+# args = ["-nb", "io.alacritty"]
+program = "open"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "U"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "U"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "U"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "U"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "U"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "U"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "U"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "U"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "U"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "U"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "U"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "U"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "U"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "U"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "D"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "D"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "D"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "D"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "D"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "D"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "D"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "D"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "D"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "D"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "D"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "D"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "D"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "D"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "D"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "D"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "D"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "D"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "ToggleViMode"
+key = "LBracket"
+mods = "Control|Alt"
+
+[[keyboard.bindings]]
+action = "ToggleViMode"
+key = "Q"
+mode = "Vi"
+
+[[keyboard.bindings]]
+action = "First"
+key = "H"
+mode = "Vi"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "Last"
+key = "L"
+mode = "Vi"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "Paste"
+key = "P"
+mods = "Control|Alt"
+
+[[keyboard.bindings]]
+chars = "\u001Bd"
+key = "D"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u0002"
+key = "Space"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001Bz"
+key = "Z"
+mods = "Alt"
+
+[mouse]
+hide_when_typing = false
+
+[scrolling]
+multiplier = 10
+
+[selection]
+save_to_clipboard = false
+
+[window]
+opacity = 1
+blur = false
+decorations = "Buttonless"
+dynamic_padding = true
+option_as_alt= "Both"
+
+[window.padding]
+x = 1
+y = 1
