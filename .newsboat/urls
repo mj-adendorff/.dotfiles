@@ -1,0 +1,35 @@
+
+# General.
+https://hnrss.org/newest?points=1500 "~Hacker News" FOSS
+
+# People.
+https://www.computerenhance.com/feed "Casey" Programming
+https://lo.calho.st/index.xml Programming "~Travis Mick"
+https://www.rfleury.com/feed Programming "~Ryan Fleury"
+https://gpanders.com/index.xml "Gregory Anders" Neovim
+https://without.boats/index.xml
+https://matklad.github.io/feed.xml
+https://api.substack.com/feed/podcast/462466.rss
+
+# Software.
+https://godotengine.org/rss.xml "~Godot Engine"
+https://bevy.org/atom.xml "~Bevy Engine"
+https://signal.org/blog/rss.xml "~Signal Blog"
+https://tigerbeetle.com/blog/atom.xml
+https://us13.campaign-archive.com/feed?u=32cd932058e988b44c838f7bc&id=fca295a96e "~TigerBeetle Newsletter"
+https://neovim.io/news.xml FOSS Programming
+https://nixos.org/news-rss.xml Linux NixOS
+https://tokio.rs/blog/index.xml
+
+# Keyboards
+https://www.ctrlshiftesc.co.za/blogs/product-updates.atom "~CSE Products" Keyboards
+https://www.ctrlshiftesc.co.za/blogs/announcements.atom "~CSE Announcements" Keyboards
+
+# Programming youtube.
+https://www.youtube.com/feeds/videos.xml?channel_id=UCUMwY9iS8oMyWDYIe6_RmoA YouTube
+https://www.youtube.com/feeds/videos.xml?channel_id=UCSp-OaMpsO8K0KkOqyBl7_w YouTube
+https://www.youtube.com/feeds/videos.xml?channel_id=UCnHX5FjwtQpxkCGziuh4NJA YouTube
+
+# Gaming.
+https://www.youtube.com/feeds/videos.xml?channel_id=UCGKx5XhGuf09VERiw_QIemA "~Hello Games" YouTube
+https://www.teamfortress.com/rss.xml "~TF2 Blog" Gaming
