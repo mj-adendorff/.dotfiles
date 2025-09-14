@@ -25,3 +25,7 @@ timeout 300
 ```
 
 ## Hyprland
+
+WIP
+
+<img width="2880" height="1800" alt="image" src="https://github.com/user-attachments/assets/40811274-a7c1-48a5-b52b-cec100d91475" />
