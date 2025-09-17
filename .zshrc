@@ -18,9 +18,10 @@ export EDITOR="nvim"
 
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '${HOME}/Applications/google-cloud-sdk/path.zsh.inc' ]; then . '${HOME}/Applications/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '$HOME/Applications/google-cloud-sdk/path.zsh.inc' ]; then . '$HOME/Applications/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '${HOME}/Applications/google-cloud-sdk/completion.zsh.inc' ]; then . '${HOME}/Applications/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f '$HOME/Applications/google-cloud-sdk/completion.zsh.inc' ]; then . '$HOME/Applications/google-cloud-sdk/completion.zsh.inc'; fi
 
 alias config='/usr/bin/git --git-dir=/home/mjadendorff/.dotfiles/ --work-tree=/home/mjadendorff'
+alias lazygit-local='lazygit --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
