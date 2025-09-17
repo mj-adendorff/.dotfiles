@@ -1,3 +1,8 @@
+git:
+  paging:
+    colorArg: always
+    pager: delta --paging=never --line-numbers --features=gruvmax-fang
+
 customCommands:
   - key: "o" # The keybinding to trigger the command
     command: "nvim {{.SelectedFile.Name}}" # The command to execute
