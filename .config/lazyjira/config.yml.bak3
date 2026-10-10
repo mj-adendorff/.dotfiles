@@ -1,0 +1,73 @@
+gui:
+  sidePanelWidth: 120
+  collapsedPanelHeight: 8
+  showIcons: true
+  issueListFields:
+    - type
+    - assignee
+    - key
+    - status
+    - summary
+  typeIcons:
+    Bug: "💥"
+    Rob: "🙋"
+    Story: "📓"
+    Nick: "🧑"
+    Chore: "🔧"
+    Sub-task: "📝"
+    Commitment: "📌"
+    On call: "🚨"
+
+  statusIcons:
+    To do: "🔵"
+    In Progress: "🟡"
+    QA: "🟤"
+    PR ready for review: "🔴"
+    ready to deploy: "🟣"
+    Done: "🟢"
+    Closed: "⭕"
+
+fields:
+  - id: status
+  - id: priority
+  - id: assignee
+  - id: issuetype
+  - id: sprint
+  - id: labels
+  - id: customfield_10033
+    name: Points
+    type: number
+
+
+issueTabs:
+  - name: Devs
+    jql: project = {{.ProjectKey}} AND sprint IN openSprints()  AND issuetype IN (Story, Chore, Bug) ORDER BY statusCategory ASC, status ASC, priority DESC, updated DESC
+
+  - name: On-Call
+    jql: project = {{.ProjectKey}} AND sprint IN openSprints()  AND issuetype IN ("On Call") ORDER BY statusCategory ASC, status ASC, priority DESC, updated DESC
+
+  - name: Rob
+    jql: project = {{.ProjectKey}} AND sprint IN openSprints()  AND issuetype IN (Rob) ORDER BY statusCategory ASC, status ASC, priority DESC, updated DESC
+
+  - name: Nick
+    jql: project = {{.ProjectKey}} AND sprint IN openSprints()  AND issuetype IN (Nick) ORDER BY statusCategory ASC, status ASC, priority DESC, updated DESC
+
+
+  - name: My Open Commitments
+    jql: project = {{.ProjectKey}} AND sprint IN openSprints()  AND issuetype IN (Commitment) AND assignee = "mj" AND status in (Open, "In Progress") ORDER BY statusCategory ASC, status ASC, priority DESC, updated DESC
+
+  - name: My Commitments
+    jql: project = {{.ProjectKey}} AND sprint IN openSprints()  AND issuetype IN (Commitment) AND assignee = "mj" ORDER BY statusCategory ASC, status ASC, priority DESC, updated DESC
+
+customCommands:
+  - key: "S"
+    name: "New SubTask"
+    command: /home/mjadendorff/.config/lazyjira/new-child.sh {{.ProjectKey}} {{.Key}} Sub-task
+
+  - key: "C"
+    name: "New Commitment"
+    command: /home/mjadendorff/.config/lazyjira/new-child.sh {{.ProjectKey}} {{.Key}} Commitment --no-desc
+
+  - key: "M"
+    name: "Sub-task <-> Commitment"
+    command: /home/mjadendorff/.config/lazyjira/set-type.sh {{.Key}} Commitment Sub-task

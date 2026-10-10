@@ -1,0 +1,64 @@
+gui:
+  sidePanelWidth: 100
+  collapsedPanelHeight: 8
+  showIcons: true
+  issueListFields:
+    - type
+    - assignee
+    - key
+    - status
+    - summary
+  typeIcons:
+    Bug: "💥"
+    Rob: "🙋‍♂️"
+    Story: "🗒️ "
+    Nick: "🫪 "
+    Chore: "🔧"
+    Sub-task: "📝 "
+    Commitment: "🖊️ "
+    On call: "🚨 "
+
+fields:
+  - id: status
+  - id: priority
+  - id: assignee
+  - id: issuetype
+  - id: sprint
+  - id: labels
+  - id: customfield_10033
+    name: Points
+    type: number
+
+
+issueTabs:
+  - name: Devs
+    jql: project = {{.ProjectKey}} AND sprint IN openSprints()  AND issuetype IN (Story, Chore, Bug)
+
+  - name: On-Call
+    jql: project = {{.ProjectKey}} AND sprint IN openSprints()  AND issuetype IN ("On Call")
+
+  - name: Rob
+    jql: project = {{.ProjectKey}} AND sprint IN openSprints()  AND issuetype IN (Rob)
+
+  - name: Nick
+    jql: project = {{.ProjectKey}} AND sprint IN openSprints()  AND issuetype IN (Nick)
+
+
+  - name: My Open Commitments
+    jql: project = {{.ProjectKey}} AND sprint IN openSprints()  AND issuetype IN (Commitment) AND assignee = "mj" AND status in (Open, "In Progress")
+
+  - name: My Commitments
+    jql: project = {{.ProjectKey}} AND sprint IN openSprints()  AND issuetype IN (Commitment) AND assignee = "mj"
+
+customCommands:
+  - key: "S"
+    name: "New SubTask"
+    command: /home/mjadendorff/.config/lazyjira/new-child.sh {{.ProjectKey}} {{.Key}} Sub-task
+
+  - key: "C"
+    name: "New Commitment"
+    command: /home/mjadendorff/.config/lazyjira/new-child.sh {{.ProjectKey}} {{.Key}} Commitment --no-desc
+
+  - key: "M"
+    name: "Sub-task <-> Commitment"
+    command: /home/mjadendorff/.config/lazyjira/set-type.sh {{.Key}} Commitment Sub-task

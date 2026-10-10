@@ -1,0 +1,236 @@
+[bar]
+order = [ "Main" ]
+
+    [bar.Main]
+    background_opacity = 0.89999997988343239
+    border = "primary"
+    center = [ "todo", "group:g2", "control-center" ]
+    concave_edge_corners = false
+    end = [ "tray", "brightness", "volume", "input_volume", "bar", "network", "battery" ]
+    margin_ends = 0
+    padding = 20
+    panel_overlap = 2
+    radius = 0
+    shadow = false
+    start = [ "notifications", "group:g1", "workspaces" ]
+
+        [[bar.Main.capsule_group]]
+        accordion = false
+        accordion_direction = "end"
+        border = "primary"
+        enabled = true
+        fill = "on_secondary"
+        id = "g1"
+        members = [ "sysmon", "cpu" ]
+        opacity = 1.0
+        padding = 13.0
+        radius = 4.0
+
+        [[bar.Main.capsule_group]]
+        accordion = false
+        accordion_direction = "end"
+        border = "primary"
+        enabled = true
+        fill = "on_secondary"
+        id = "g2"
+        members = [ "clock" ]
+        opacity = 1.0
+        padding = 8.0
+        radius = 3.0
+
+[calendar]
+enabled = true
+
+    [calendar.account.personal_google]
+    color = "secondary"
+    type = "google"
+
+    [calendar.account.work_google]
+    color = "error"
+    name = "Work Calendar"
+    type = "google"
+
+[desktop_widgets]
+enabled = false
+
+[dock]
+launcher_position = "end"
+reserve_space = false
+show_dots = true
+smart_auto_hide = true
+
+[hot_corners.top_right]
+action = "launcher"
+
+[location]
+address = "Stellenbosch"
+custom_schedule = true
+sunrise = "07:30"
+sunset = "20:30"
+
+[lockscreen]
+fingerprint = false
+
+[lockscreen_widgets]
+enabled = false
+schema_version = 2
+widget_order = [ "lockscreen-login-box@eDP-1" ]
+
+    [lockscreen_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 960.0
+    cy = 1018.0
+    output = "eDP-1"
+    placement_height = 1200.0
+    placement_width = 1920.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@eDP-1".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+[nightlight]
+enabled = true
+temperature_night = 4700
+
+[plugin_settings."nightwatch75/todo"]
+panel_placement = "floating"
+
+[plugins]
+enabled = [ "noctalia/notes", "nightwatch75/todo", "andrewdems/vpn-manager" ]
+
+[shell]
+clipboard_auto_paste = "off"
+font_family = "0xProto Nerd Font Propo"
+polkit_agent = true
+screen_time_enabled = true
+
+    [shell.launcher]
+    app_grid = true
+
+    [shell.screenshot]
+    annotate = true
+    directory = "/home/mjadendorff/Pictures/Screenshots"
+
+[theme]
+community_palette = "Oxocarbon"
+mode = "dark"
+source = "wallpaper"
+wallpaper_scheme = "m3-tonal-spot"
+
+    [theme.templates.user.hypr_border]
+    input_path = "~/.config/noctalia/templates/hypr-border.sh"
+    output_path = "~/.cache/noctalia/hypr-border.sh"
+    post_hook = "bash ~/.cache/noctalia/hypr-border.sh"
+
+[wallpaper]
+directory = "/home/mjadendorff/Pictures/Wallpapers"
+
+    [wallpaper.automation]
+    enabled = true
+    interval_seconds = 3600
+
+    [wallpaper.default]
+    path = "/home/mjadendorff/Pictures/Wallpapers/wallhaven-1qjmx3.jpg"
+
+    [wallpaper.last]
+    path = "/home/mjadendorff/Pictures/Wallpapers/wallhaven-1qjmx3.jpg"
+
+    [wallpaper.monitors.eDP-1]
+    path = "/home/mjadendorff/Pictures/Wallpapers/wallhaven-1qjmx3.jpg"
+
+    [[wallpaper.favorite]]
+    path = "/home/mjadendorff/Pictures/Wallpapers/a_screenshot_of_a_video_game_01.jpg"
+    theme_mode = "auto"
+
+[widget.bar]
+type = "andrewdems/vpn-manager:bar"
+
+[widget.battery]
+capsule = true
+capsule_border = "primary"
+capsule_fill = "on_secondary"
+capsule_padding = 8
+capsule_radius = 4
+display_mode = "graphic"
+icon_color = "primary"
+
+[widget.bluetooth]
+color = "secondary"
+enabled = false
+
+[widget.brightness]
+icon_color = "primary"
+
+[widget.clipboard]
+enabled = false
+
+[widget.clock]
+font_scale = 1.2
+
+[widget.control-center]
+color = "primary"
+glyph = "navigation"
+scale = 1.2000000000000002
+
+[widget.cpu]
+show_glyph = false
+
+[widget.input_volume]
+show_label = false
+
+[widget.launcher]
+enabled = false
+
+[widget.media]
+album_art_only = true
+art_size = 24
+enabled = false
+hide_when_no_media = true
+show_progress = true
+
+[widget.network]
+capsule = true
+icon_color = "primary"
+
+[widget.sysmon]
+show_glyph = false
+stat = "cpu_temp"
+
+[widget.todo]
+count_mode = "both"
+show_label = false
+type = "nightwatch75/todo:todo"
+
+[widget.volume]
+icon_color = "primary"
+
+[widget.wallpaper]
+enabled = false
+
+[widget.workspaces]
+active_pill_size = 3.3500000000000001
+inactive_pill_size = 2.25
+label_source = "name"
+labels_only_when_occupied = true
+max_label_chars = 20
+scale = 1.3

@@ -1,0 +1,50 @@
+project = QS AND issue = QS-6717
+project = SEC AND issue = "SEC-137"
+project = QS AND issue = QS-6604
+project = QS AND issue = QS-6584
+project = QS AND issue = QS-6556
+project = QS AND sprint = "Sprint 40"
+project = QR AND sprint = "Sprint 40"
+project = SEC AND status not in ("Done", "Closed")
+project = SEC
+project = QS AND issue = QS-6064
+project = QS AND issue = "QS-4209"
+project = QS AND issue = "QS-6556"
+project = QS AND issue = "Q-6556"
+project = QS AND status = "Backlog"
+project = QS AND status = "backlog"
+project = QS AND summary ~ "upload"
+project = QS AND summary ~ "appen"
+project = QS AND summary ~ "appendi"
+project = QS AND sprint = "Triage"
+project = QS AND sprint = "Sprint 39"
+project = QS AND spirnt = "Sprint 39"
+project = SEC AND issue = SEC-99
+project = SEC AND issue = SEC-107
+project = QS AND issue = QS-6533
+project = QS AND summary ~ "Urge"
+project = QS AND issue ~ "Urge"
+project = SEC AND issue = "SEC-99"
+project = QS AND sprint = "Sprint 37"
+project = QS AND issue = QS-6439
+project = QS AND issue = QS-6275
+project = QS AND summary ~ "3.13"
+project = QS AND issue = QS-6322
+project = QS AND summary ~ "register leads to "
+project = QS AND issue = QS-5438
+project = QS AND issue = QS-6057
+project = QS-5438
+project = QS AND issue = QS-6225
+project = QS AND issue = QS-6257
+project = QS AND issue = QS-6347
+project = QS AND issue = QS-6350
+project = QR
+project = QS AND issue = QS-6297
+project = QS AND summary ~ "Cost"
+project = QS AND issue = "QS-6342"
+project = QS AND issue = QS-6342
+project = QS AND issue = qs-6342
+project = QS AND issue = "QS-6272"
+project = QS AND issue = "QS-6227"
+project = QS AND sprint = "Sprint 37" and issuetype not in (Rob, Nick, Commitment, Sub-task)
+project = QS AND sprint = "Sprint 37" and issuetype not in (Rob, Nick, Commitment,  Sub-task)

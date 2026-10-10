@@ -1,0 +1,126 @@
+# ~/.config/ghostty/config.ghostty
+
+# -------------------------------------------------------------------
+# Font
+# -------------------------------------------------------------------
+
+font-family = ZedMono Nerd Font Mono
+font-family-bold = ZedMono Nerd Font Mono
+font-family-italic = ZedMono Nerd Font Mono
+
+font-style = Regular
+font-style-bold = Regular
+font-style-italic = Italic
+
+font-size = 10
+
+# -------------------------------------------------------------------
+# Colours
+# -------------------------------------------------------------------
+
+background = #000000
+foreground = #ffffff
+
+# Normal ANSI colours
+palette = 0=#24272e
+palette = 1=#e06c75
+palette = 2=#98c379
+palette = 3=#e5c07b
+palette = 4=#61afef
+palette = 5=#c678dd
+palette = 6=#56b6c2
+palette = 7=#abb2bf
+
+# Bright ANSI colours
+palette = 8=#3e4452
+palette = 9=#be5046
+palette = 10=#98c379
+palette = 11=#d19a66
+palette = 12=#61afef
+palette = 13=#c678dd
+palette = 14=#56b6c2
+palette = 15=#5c6370
+
+# -------------------------------------------------------------------
+# Cursor
+# -------------------------------------------------------------------
+
+cursor-color = #528bff
+cursor-text = #0b0b0b
+cursor-style = block
+
+# Prevent shell integration from changing the configured cursor style
+shell-integration-features = no-cursor
+
+# -------------------------------------------------------------------
+# Selection
+# -------------------------------------------------------------------
+
+selection-background = #3e4452
+selection-foreground = #abb2bf
+
+# Alacritty had:
+# save_to_clipboard = false
+#
+# Ghostty defaults to copy-on-select on Linux, so explicitly disable it.
+copy-on-select = false
+
+# -------------------------------------------------------------------
+# Window
+# -------------------------------------------------------------------
+
+background-opacity = 0.85
+background-blur = false
+
+window-decoration = none
+
+window-padding-x = 0
+window-padding-y = 0
+
+# Closest equivalent to Alacritty's dynamic_padding behaviour:
+window-padding-balance = true
+
+# -------------------------------------------------------------------
+# Mouse / scrolling
+# -------------------------------------------------------------------
+
+mouse-hide-while-typing = false
+mouse-scroll-multiplier = 10
+
+# -------------------------------------------------------------------
+# Keyboard
+# -------------------------------------------------------------------
+
+# Clipboard
+keybind = super+c=copy_to_clipboard
+keybind = super+v=paste_from_clipboard
+
+# Quit / close
+keybind = super+q=close_window
+keybind = super+w=close_window
+
+# Font size
+keybind = super+equal=increase_font_size:1
+keybind = super+minus=decrease_font_size:1
+keybind = super+0=reset_font_size
+
+# Your extra Super+U / Super+D bindings
+keybind = super+u=increase_font_size:1
+keybind = super+d=decrease_font_size:1
+
+# Scrolling
+keybind = shift+end=scroll_to_bottom
+keybind = shift+home=scroll_to_top
+
+# Ctrl+Alt+P -> paste
+keybind = ctrl+alt+p=paste_from_clipboard
+
+# Alt+D -> ESC d
+keybind = alt+d=esc:d
+
+# Super+Space -> Ctrl+B
+# Useful if this is your tmux prefix.
+keybind = super+space=text:\x02
+
+# Alt+Z -> ESC z
+keybind = alt+z=esc:z

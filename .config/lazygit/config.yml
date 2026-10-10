@@ -3,3 +3,7 @@ customCommands:
     command: "nvim {{.SelectedFile.Name}}" # The command to execute
     context: "files" # The panel where this command is active
     description: "Open file in VS Code"
+git:
+  diffRenderers:
+    - colorArg: always
+      command: delta --dark --paging=never

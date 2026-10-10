@@ -1,0 +1,91 @@
+gui:
+  sidePanelWidth: 120
+  collapsedPanelHeight: 8
+  showIcons: true
+  issueListFields:
+    - type
+    - assignee
+    - key
+    - status
+    - summary
+  typeIcons:
+    Bug: "💥"
+    Rob: "🙋"
+    Story: "📓"
+    Nick: "🧑"
+    Chore: "🔧"
+    Sub-task: "📝"
+    Commitment: "📌"
+    Security: "🔒"
+    Spike: "❓"
+    Task: "🧩"
+    On call: "🚨"
+
+  statusIcons:
+    To Do: "🔵"
+    In Progress: "🟡"
+    QA: "🟤"
+    PR ready for review: "🔴"
+    ready to deploy: "🟣"
+    Done: "🟢"
+    Closed: "❎"
+    Missed: "⛔"
+
+
+converter: adf-converter
+renderer: glamour
+rendererStyle: auto   # auto|dark|light|notty - set explicitly if detection misfires under tmux/ssh
+
+cache:
+    enabled: true
+    ttl: 5m
+
+fields:
+  - id: status
+  - id: priority
+  - id: assignee
+  - id: issuetype
+  - id: sprint
+  - id: labels
+  - id: customfield_10033
+    name: Points
+    type: number
+  - id: fixVersions
+
+
+issueTabs:
+  - name: Devs
+    jql: project = {{.ProjectKey}} AND sprint IN openSprints()  AND issuetype IN (Story, Chore, Bug) ORDER BY statusCategory ASC, status ASC, Rank ASC
+
+  - name: On-Call
+    jql: project = {{.ProjectKey}} AND sprint IN openSprints()  AND issuetype IN ("On Call") ORDER BY statusCategory ASC, status ASC, Rank ASC
+
+  - name: Rob
+    jql: project = {{.ProjectKey}} AND sprint IN openSprints()  AND issuetype IN (Rob) ORDER BY statusCategory ASC, status ASC, Rank ASC
+
+  - name: Nick
+    jql: project = {{.ProjectKey}} AND sprint IN openSprints()  AND issuetype IN (Nick) ORDER BY statusCategory ASC, status ASC, Rank ASC
+
+  - name: My Open Commitments
+    jql: project = {{.ProjectKey}} AND sprint IN openSprints()  AND issuetype IN (Commitment) AND assignee = "mj" AND status in (Open, "In Progress") ORDER BY statusCategory ASC, status ASC, Rank ASC
+
+  - name: My Commitments
+    jql: project = {{.ProjectKey}} AND sprint IN openSprints()  AND issuetype IN (Commitment) AND assignee = "mj" ORDER BY statusCategory ASC, status ASC, Rank ASC
+
+
+customCommands:
+  - key: "S"
+    name: "New SubTask"
+    command: /home/mjadendorff/.config/lazyjira/new-child.sh {{.ProjectKey}} {{.Key}} Sub-task
+
+  - key: "C"
+    name: "New Commitment"
+    command: /home/mjadendorff/.config/lazyjira/new-child.sh {{.ProjectKey}} {{.Key}} Commitment --no-desc
+
+  - key: "M"
+    name: "Sub-task <-> Commitment"
+    command: /home/mjadendorff/.config/lazyjira/set-type.sh {{.Key}} Commitment Sub-task
+
+  - key: "v"
+    name: "View body (mcat)"
+    command: /home/mjadendorff/.config/lazyjira/show-body.sh {{.Key}}

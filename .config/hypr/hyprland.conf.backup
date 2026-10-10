@@ -1,0 +1,312 @@
+################
+### COLOURS  ###
+################
+
+source = ../hypr/colors.conf
+
+################
+### MONITORS ###
+################
+
+# See https://wiki.hyprland.org/Configuring/Monitors/
+monitor=eDP-1, highrr, auto-down, 1.5, vrr, 1
+#monitor=HDMI-A-1, 3440x1440@100, auto-up, 2, vrr, 1
+#monitor=DP-1, 1920x1080@144, auto-up, 1
+#monitor=DP-1, 3440x1440@143, auto-up, 1
+monitor=DP-1, 2560x1440@165, auto-up, 1
+
+###################
+### MY PROGRAMS ###
+###################
+
+$tmux = alacritty -e "tmux"
+$terminal = alacritty
+$fileManager = nautilus
+$menu = wofi --show drun
+
+#################
+### AUTOSTART ###
+#################
+
+#exec-once = hyprsunset
+exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+exec-once = mako
+exec-once = waybar
+exec-once = nm-applet --indicator
+#exec-once = hyprpm reload -n
+exec-once = wl-paste --watch cliphist store
+exec-once = hyprpaper
+exec-once = /home/mjadendorff/.config/hypr/wallpaper-script.sh
+exec-once = snappy-switcher --daemon
+exec-once = hypridle
+exec-once = ~/.config/hypr/wallpaper-rotator.sh
+
+#############################
+### ENVIRONMENT VARIABLES ###
+#############################
+
+# See https://wiki.hyprland.org/Configuring/Environment-variables/
+xwayland {
+    force_zero_scaling = true
+}
+
+env = GTK_THEME, Space-dark
+env = XCURSOR_SIZE,20
+env = HYPRCURSOR_SIZE,20
+env = GDK_SCALE,1
+
+#env = LIBVA_DRIVER_NAME,nvidia
+env = XDG_SESSION_TYPE,wayland
+env = XDG_SESSION_DESKTOP,Hyprland
+env = GDK_BACKEND,wayland,x11,*
+# env = GBM_BACKEND,nvidia-drm
+#env = __GLX_VENDOR_LIBRARY_NAME,nvidia
+
+cursor {
+	no_hardware_cursors = true
+}
+
+
+
+#####################
+### LOOK AND FEEL ###
+#####################
+
+# Refer to https://wiki.hyprland.org/Configuring/Variables/
+
+# https://wiki.hyprland.org/Configuring/Variables/#general
+general {
+    gaps_in = 2 #2
+    gaps_out = 4 #4
+    border_size = 0 #3
+
+    #col.active_border = rgba(33ccffee) rgba(00ff99ee) 45deg
+    col.active_border =  rgba(33ccffee) rgba(00ff99ee) 45deg
+    #col.active_border =  rgb(131,119,209) 
+    col.inactive_border = rgba(595959aa)
+
+    # Set to true enable resizing windows by clicking and dragging on borders and gaps
+    resize_on_border = false
+
+    # Please see https://wiki.hyprland.org/Configuring/Tearing/ before you turn this on
+    allow_tearing = true
+
+    layout = dwindle
+}
+
+# https://wiki.hyprland.org/Configuring/Variables/#decoration
+decoration {
+    rounding = 5 #10
+
+    # Change transparency of focused and unfocused windows
+    active_opacity = 1.0
+    inactive_opacity = 1.0
+
+	shadow {
+		enabled = false
+	}
+    # https://wiki.hyprland.org/Configuring/Variables/#blur
+    blur {
+        enabled = false
+        size = 5
+        passes = 1
+        vibrancy = 0.1696
+    }
+}
+
+animations {
+	enabled = true
+    # Curves
+    bezier = expressiveFastSpatial, 0.42, 1.67, 0.21, 0.90
+    bezier = expressiveSlowSpatial, 0.39, 1.29, 0.35, 0.98
+    bezier = expressiveDefaultSpatial, 0.38, 1.21, 0.22, 1.00
+    bezier = emphasizedDecel, 0.05, 0.7, 0.1, 1
+    bezier = emphasizedAccel, 0.3, 0, 0.8, 0.15
+    bezier = standardDecel, 0, 0, 0, 1
+    bezier = menu_decel, 0.1, 1, 0, 1
+    bezier = menu_accel, 0.52, 0.03, 0.72, 0.08
+    bezier = stall, 1, -0.1, 0.7, 0.85
+    # Configs
+    # windows
+    animation = windowsIn, 1, 3, emphasizedDecel, popin 80%
+    animation = fadeIn, 1, 3, emphasizedDecel
+    animation = windowsOut, 1, 2, emphasizedDecel, popin 90%
+    animation = fadeOut, 1, 2, emphasizedDecel
+    animation = windowsMove, 1, 3, emphasizedDecel, slide
+    animation = border, 1, 10, emphasizedDecel
+    # layers
+    animation = layersIn, 1, 2.7, emphasizedDecel, popin 93%
+    animation = layersOut, 1, 2.4, menu_accel, popin 94%
+    # fade
+    animation = fadeLayersIn, 1, 0.5, menu_decel
+    animation = fadeLayersOut, 1, 2.7, stall
+    # workspaces
+    animation = workspaces, 1, 7, menu_decel, slide
+    ## specialWorkspace
+    animation = specialWorkspaceIn, 1, 2.8, emphasizedDecel, slidevert
+    animation = specialWorkspaceOut, 1, 1.2, emphasizedAccel, slidevert
+    # zoom
+    animation = zoomFactor, 1, 3, standardDecel
+}
+
+dwindle {
+    preserve_split = true # You probably want this
+}
+
+master {
+    new_status = master
+}
+
+misc {
+    force_default_wallpaper = 0
+    disable_hyprland_logo = true 
+}
+
+#############
+### INPUT ###
+#############
+
+input {
+    kb_layout = us
+    kb_variant =
+    kb_model =
+    kb_options =
+    kb_rules =
+    repeat_rate = 50
+    repeat_delay = 250
+
+    follow_mouse = 1
+    sensitivity = 0
+
+    touchpad {
+        natural_scroll = true
+		scroll_factor = 0.2
+		tap-to-click = true
+    }
+}
+
+device {
+    name = epic-mouse-v1
+    sensitivity = -0.5
+}
+
+###################
+### KEYBINDINGS ###
+###################
+
+$mainMod = Super_L # Windows key
+
+bind = $mainMod, Return, exec, $terminal
+bind = $mainMod SHIFT, Return, exec, alacritty
+bind = $mainMod SHIFT, Q, killactive,
+bind = $mainMod SHIFT, E, exec, .config/rofi/powermenu/type-2/powermenu.sh
+bind = $mainMod, F, fullscreen,
+bind = $mainMod, Space, togglefloating,
+bind = $mainMod, R, exec, wofi --show drun
+bind = $mainMod, D, exec, rofi -no-lazy-grab -show drun -theme .config/rofi/launchers/type-2/style-8.rasi
+
+bind = $mainMod, H, movefocus, l
+bind = $mainMod, L, movefocus, r
+bind = $mainMod, K, movefocus, u
+bind = $mainMod, J, movefocus, d
+
+gesture = 3, horizontal, workspace
+
+# Move relative workspaces left and right
+# bind = $mainMod SHIFT, p, workspace, e-1
+# bind = $mainMod SHIFT, n, workspace, e+1
+bind = $mainMod, e, exec, workspace, e+1
+bind = $mainMod, q, exec, workspace, e-1
+bind = $mainMod SHIFT, left, workspace, e-1
+bind = $mainMod SHIFT, right, workspace, e+1
+
+# Switch workspaces with mainMod + [0-9]
+bind = $mainMod, 1, workspace, 1
+bind = $mainMod, 2, workspace, 2
+bind = $mainMod, 3, workspace, 3
+bind = $mainMod, 4, workspace, 4
+bind = $mainMod, 5, workspace, 5
+bind = $mainMod, 6, workspace, 6
+bind = $mainMod, 7, workspace, 7
+bind = $mainMod, 8, workspace, 8
+bind = $mainMod, 9, workspace, 9
+bind = $mainMod, 0, workspace, 10
+
+# Move active window to a workspace with mainMod + SHIFT + [0-9]
+bind = $mainMod SHIFT, 1, movetoworkspace, 1
+bind = $mainMod SHIFT, 2, movetoworkspace, 2
+bind = $mainMod SHIFT, 3, movetoworkspace, 3
+bind = $mainMod SHIFT, 4, movetoworkspace, 4
+bind = $mainMod SHIFT, 5, movetoworkspace, 5
+bind = $mainMod SHIFT, 6, movetoworkspace, 6
+bind = $mainMod SHIFT, 7, movetoworkspace, 7
+bind = $mainMod SHIFT, 8, movetoworkspace, 8
+bind = $mainMod SHIFT, 9, movetoworkspace, 9
+bind = $mainMod SHIFT, 0, movetoworkspace, 10
+
+bind = $mainMod SHIFT, H, movewindow, l
+bind = $mainMod SHIFT, L, movewindow, r
+bind = $mainMod SHIFT, K, movewindow, u
+bind = $mainMod SHIFT, J, movewindow, d
+
+bindm = $mainMod, mouse:272, movewindow
+bindm = $mainMod SHIFT, mouse:272, resizewindow
+
+# Clipboard
+bind = $mainMod SHIFT, V, exec, rofi -modi clipboard:/home/mjadendorff/.config/hypr/cliphist.sh -show clipboard -show-icons
+
+# Screenshot
+bind = , Print, exec, grimshot save area
+bind = $mainMod, Print, exec, grimshot copy area
+bind = $mainMod, Home, exec, grimshot copy area
+bind = $mainMod SHIFT, Home, exec, grimshot save area
+
+# Audio controls
+bind = , XF86AudioMute, exec, pactl set-sink-mute 0 toggle
+bind = , XF86AudioMicMute, exec, pactl set-source-mute 0 toggle
+bind = , XF86AudioRaiseVolume, exec, pactl set-sink-volume 0 +5%
+bind = , XF86AudioLowerVolume, exec, pactl set-sink-volume 0 -5%
+
+
+bind = $mainMod, XF86AudioMute, exec, playerctl play-pause
+bindl = , XF86AudioPlay, exec, playerctl play-pause
+bind = $mainMod, XF86AudioLowerVolume, exec, playerctl previous
+bind = $mainMod, XF86AudioRaiseVolume, exec, playerctl next
+
+# Screen controls
+bind = , XF86MonBrightnessUp, exec, brightnessctl set +10%
+bind = , XF86MonBrightnessDown, exec, brightnessctl set 10-%
+bind = $mainMod, XF86Launch1, exec, hyprsunset & hyprctl hyprsunset temperature 4500
+bind = $mainMod SHIFT, XF86Launch1, exec, hyprctl hyprsunset identity
+
+# Toggle waybar
+bind = $mainMod, O, exec, killall -SIGUSR1 waybar
+
+# Window rules.
+windowrule = match:class ^(brave-.+-Profile_\d)$, float on
+windowrule = match:class ^(org.gnome.Nautilus)$, float on
+windowrule = match:title ^.*(wants.to.save)$, float on, size 1200 800
+
+windowrule {
+	name = "Auth window"
+	match:title = ^.*(signInViaPopup).*$
+	border_size = 20
+	float = on
+	size = 800 800
+}
+
+bind = $mainMod, R, exec, alacritty --title alafloat
+
+##############################
+### OTHER BINDS            ###
+##############################
+
+# Clamshell mode configuration
+bindl=,switch:off:Lid Switch,exec,~/.config/hypr/lid.sh open # Lid is opened
+bindl=,switch:on:Lid Switch,exec,~/.config/hypr/lid.sh close # Lid is closed
+
+##############################
+### WINDOWS AND WORKSPACES ###
+##############################
+
+#windowrulev2 = suppressevent maximize, class:.*

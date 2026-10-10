@@ -7,8 +7,8 @@ if [[ "$(hyprctl monitors)" =~ "\sDP-[0-9]+" ]]; then
     hyprctl keyword monitor "eDP-1,disable"
   fi
 else
-  if [[ $1 == "close" ]]; then
-	hyprlock
+  if [[ $1 == "close" ]] && ! pidof hyprlock >/dev/null; then
+    exec hyprlock
   fi
 fi
 
