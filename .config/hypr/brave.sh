@@ -11,7 +11,7 @@ active_class="$(hyprctl activewindow -j | jq -r '.class')"
 
 if [[ "$active_class" =~ [Bb]rave ]]; then
     brave \
-        --profile-directory='Profile 1' \
+        --profile-directory='Default' \
         --container="$container" \
         . >/dev/null 2>&1 &
 

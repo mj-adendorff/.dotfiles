@@ -4,6 +4,24 @@
 
 local colors = require("colors")
 
+--- DETERMINE THE SYSTEM
+
+local CPU_NAME = "Unknown CPU"
+local f = io.open("/proc/cpuinfo", "r")
+if f then
+    for line in f:lines() do
+        local model = line:match("model name%s*:%s*(.+)")
+        if model then
+            CPU_NAME = model
+            break
+        end
+    end
+    f:close()
+end
+
+local IS_PC = CPU_NAME:lower():find("amd") ~= nil
+local IS_LAPTOP = CPU_NAME:lower():find("intel") ~= nil
+
 ----------------
 --- MONITORS ---
 ----------------
@@ -23,6 +41,24 @@ hl.monitor({
 	scale = 1,
 })
 
+if IS_PC then
+	hl.monitor({
+		output = "DP-1",
+		mode = "3440x1440@165",
+		position = "auto",
+		scale = 1,
+	})
+
+	hl.monitor({
+		output = "HDMI-A-1",
+		mode = "2560x1440@165",
+		position = "auto-left",
+		scale = 1,
+		transform = 3,
+
+	})
+end
+
 -------------------
 --- WORKSPACES ---
 -------------------
@@ -38,12 +74,17 @@ hl.workspace_rule({ workspace = "8", persistent = false, default_name = "8:Code"
 hl.workspace_rule({ workspace = "9", persistent = false, default_name = "9:Media" })
 hl.workspace_rule({ workspace = "10", persistent = false, default_name = "10:Media" })
 
+if IS_PC then
+	-- Make workspace 1 persistent on left monitor
+	hl.workspace_rule({ workspace = "1", monitor = "HDMI-A-1", persistent = false, default_name = "1:Web" })
+end
+
 -------------------
 --- MY PROGRAMS ---
 -------------------
 
 local tmux = [[alacritty -e "tmux"]]
-local terminal = "ghostty"
+local terminal = "alacritty"
 local fileManager = "nautilus"
 local menu = "wofi --show drun"
 
@@ -53,19 +94,11 @@ local menu = "wofi --show drun"
 
 hl.on("hyprland.start", function()
 	hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
-	--hl.exec_cmd("mako")
-	-- hl.exec_cmd("waybar")
 	hl.exec_cmd("noctalia")
-	--hl.exec_cmd("hyprwhenthen run")
-	--hl.exec_cmd("nm-applet --indicator")
-	-- hl.exec_cmd("hyprsunset")
-	-- hl.exec_cmd("hyprpm reload -n")
-	--hl.exec_cmd("wl-paste --watch cliphist store")
-	--hl.exec_cmd("hyprpaper")
-	--hl.exec_cmd("$HOME/.config/hypr/wallpaper-script.sh")
-	--hl.exec_cmd("snappy-switcher --daemon")
-	hl.exec_cmd("hypridle")
-	--hl.exec_cmd("$HOME/.config/hypr/wallpaper-rotator.sh")
+	hl.exec_cmd("hyprctl setcursor Noir 20")
+	if IS_LAPTOP then
+		hl.exec_cmd("hypridle")
+	end
 end)
 
 -------------------------------
@@ -79,13 +112,16 @@ hl.env("GDK_SCALE", "1.5")
 hl.env("XDG_SESSION_TYPE", "wayland")
 hl.env("XDG_SESSION_DESKTOP", "Hyprland")
 hl.env("GDK_BACKEND", "wayland,x11,*")
--- hl.env("LIBVA_DRIVER_NAME", "nvidia")
--- hl.env("GBM_BACKEND", "nvidia-drm")
--- hl.env("__GLX_VENDOR_LIBRARY_NAME", "nvidia")
+if IS_PC then
+	hl.env("LIBVA_DRIVER_NAME", "nvidia")
+	hl.env("GBM_BACKEND", "nvidia-drm")
+	hl.env("__GLX_VENDOR_LIBRARY_NAME", "nvidia")
+end
 
 ---------------------
 --- LOOK AND FEEL ---
 ---------------------
+
 
 hl.config({
 	xwayland = {
@@ -99,9 +135,9 @@ hl.config({
 	},
 
 	general = {
-		gaps_in = 1, --1
+		gaps_in = 2, --1
 		gaps_out = 2, --2
-		border_size = 0, --3
+		border_size = 3, --3
 
 		col = {
 			active_border = {
@@ -129,11 +165,11 @@ hl.config({
 		inactive_opacity = 1.0,
 
 		shadow = {
-			enabled = false,
+			enabled = true,
 		},
 
 		blur = {
-			enabled = false,
+			enabled = true,
 			size = 5,
 			passes = 1,
 			vibrancy = 0.1696,
@@ -408,6 +444,7 @@ hl.bind(mainMod .. " + SHIFT + T", hl.dsp.exec_cmd("noctalia msg panel-toggle ni
 hl.bind("CONTROL + SHIFT + 1", hl.dsp.exec_cmd("$HOME/.config/hypr/brave.sh Personal"))
 hl.bind("CONTROL + SHIFT + 2", hl.dsp.exec_cmd("$HOME/.config/hypr/brave.sh Work"))
 hl.bind("CONTROL + SHIFT + 3", hl.dsp.exec_cmd("$HOME/.config/hypr/brave.sh Professional"))
+hl.bind("CONTROL + SHIFT + 4", hl.dsp.exec_cmd("$HOME/.config/hypr/brave.sh Spam"))
 
 -- Terminal
 
@@ -484,16 +521,16 @@ hl.bind("Print", hl.dsp.exec_cmd("noctalia msg screenshot-region"))
 --- AUDIO CONTROL ---
 --------------------
 
-hl.bind("XF86AudioMute", hl.dsp.exec_cmd("pactl set-sink-mute 0 toggle"))
-hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd("pactl set-source-mute 0 toggle"))
-hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("pactl set-sink-volume 0 +5%"))
-hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("pactl set-sink-volume 0 -5%"))
+hl.bind("XF86AudioMute", hl.dsp.exec_cmd("noctalia msg volume-mute"))
+hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd("noctalia msg mic-mute"))
+hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("noctalia msg volume-up"))
+hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("noctalia msg volume-down"))
 
 -- Media
 
-hl.bind(mainMod .. " + P", hl.dsp.exec_cmd("playerctl play-pause"))
-hl.bind(mainMod .. " + bracketleft", hl.dsp.exec_cmd("playerctl previous"))
-hl.bind(mainMod .. " + bracketright", hl.dsp.exec_cmd("playerctl next"))
+hl.bind(mainMod .. " + P", hl.dsp.exec_cmd("noctalia msg media toggle"))
+hl.bind(mainMod .. " + bracketleft", hl.dsp.exec_cmd("noctalia msg media previous"))
+hl.bind(mainMod .. " + bracketright", hl.dsp.exec_cmd("noctalia msg media next"))
 
 ---------------------
 --- SCREEN CONTROL ---
