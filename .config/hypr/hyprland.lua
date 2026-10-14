@@ -122,6 +122,10 @@ end
 --- LOOK AND FEEL ---
 ---------------------
 
+local GAPS_IN = IS_PC and 2 or 0
+local GAPS_OUT = IS_PC and 2 or 0
+local BORDER_SIZE = IS_PC and 3 or 0
+
 
 hl.config({
 	xwayland = {
@@ -135,9 +139,9 @@ hl.config({
 	},
 
 	general = {
-		gaps_in = 2, --1
-		gaps_out = 2, --2
-		border_size = 3, --3
+		gaps_in = GAPS_IN, --1
+		gaps_out = GAPS_OUT, --2
+		border_size = BORDER_SIZE, --3
 
 		col = {
 			active_border = {
@@ -441,10 +445,10 @@ hl.bind(mainMod .. " + SHIFT + T", hl.dsp.exec_cmd("noctalia msg panel-toggle ni
 
 -- Browser
 
-hl.bind("CONTROL + SHIFT + 1", hl.dsp.exec_cmd("$HOME/.config/hypr/brave.sh Personal"))
-hl.bind("CONTROL + SHIFT + 2", hl.dsp.exec_cmd("$HOME/.config/hypr/brave.sh Work"))
-hl.bind("CONTROL + SHIFT + 3", hl.dsp.exec_cmd("$HOME/.config/hypr/brave.sh Professional"))
-hl.bind("CONTROL + SHIFT + 4", hl.dsp.exec_cmd("$HOME/.config/hypr/brave.sh Spam"))
+-- hl.bind("CONTROL + SHIFT + 1", hl.dsp.exec_cmd("$HOME/.config/hypr/brave.sh Personal"))
+-- hl.bind("CONTROL + SHIFT + 2", hl.dsp.exec_cmd("$HOME/.config/hypr/brave.sh Work"))
+-- hl.bind("CONTROL + SHIFT + 3", hl.dsp.exec_cmd("$HOME/.config/hypr/brave.sh Professional"))
+-- hl.bind("CONTROL + SHIFT + 4", hl.dsp.exec_cmd("$HOME/.config/hypr/brave.sh Spam"))
 
 -- Terminal
 
@@ -536,8 +540,8 @@ hl.bind(mainMod .. " + bracketright", hl.dsp.exec_cmd("noctalia msg media next")
 --- SCREEN CONTROL ---
 ---------------------
 
-hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl set +10%"))
-hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl set 10-%"))
+hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("noctalia msg brightness-up"))
+hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("noctalia msg brightness-down"))
 
 ------------------
 --- BAR TOGGLE ---
